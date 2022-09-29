@@ -1,0 +1,29 @@
+.wTableName{
+    width: 220px;
+}
+.wTableRange{
+    width: 60px;
+}
+.wTableType{
+    width: 100px;
+}
+.wTableStat{
+    width: 38px;
+}
+.wTableHead{
+    vertical-align: middle;
+    font-size: 1.1em;
+    font-weight: 700;
+    background-color: #b4bbb4;
+    padding: 1px 6px 1px 6px;
+}
+.wTablePad{
+    padding: 4px;
+}
+.ct{
+    text-align: center;
+}
+.topB{
+    border-top: 2px ridge #888;
+}
+

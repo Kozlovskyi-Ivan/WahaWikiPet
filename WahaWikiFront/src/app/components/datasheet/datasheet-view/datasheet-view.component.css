@@ -1,0 +1,16 @@
+.datasheet{
+    font-size: 1.1em;
+    font-weight: 100;
+    border:4px solid #101010;
+    border-width: 0px, 4px, 4px, 4px;
+}
+.dsTitle{
+    font-size: 1.67em;
+    display:block;
+    font-weight: 700;
+    margin: 0;
+    padding: 7px 0px 7px 0px;
+    color: #fefefe;
+    background: #101010;
+    text-align:center;
+}
