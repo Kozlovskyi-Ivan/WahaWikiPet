@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { IWeaponStatLine } from 'src/app/entities/entities';
+import { Component, Input, OnInit } from '@angular/core';
+import { Weapon } from '../../enteties/UnitEntety';
 
 @Component({
   selector: 'app-weapon-list',
@@ -8,18 +8,13 @@ import { IWeaponStatLine } from 'src/app/entities/entities';
 })
 export class WeaponListComponent implements OnInit {
 
-  WeaponList:IWeaponStatLine={
-    WeaponName: 'Drakkis',
-    Range: 12,
-    Type: 'Assault D6',
-    Strength: 4,
-    AP: 1,
-    Damage: 1,
-    Abilities: '-'
-  };
+  @Input('weaponList')  
+  weaponList?:Weapon[];
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.weaponList);
   }
 
 }

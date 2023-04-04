@@ -16,4 +16,17 @@
     font-weight: 700;
     padding: 3px 154px 3px 3px;
 }
+.priceTag{
+    font-family: times new roman, sans-serif;
+    float: right;
+    font-size: 0.9em;
+    line-height: initial;
+    padding: 2px 4px 0px 12px;
+    color: #fefefe;
+    background-color: #b32d2d;
+    font-weight: bold;
+    background: linear-gradient(135deg, transparent 8px, #b32d2d 0) top left, linear-gradient(225deg, transparent 0px, #b32d2d 0) top right, linear-gradient(-45deg, transparent 0px, #b32d2d 0) bottom right, linear-gradient(46deg, transparent 8px, #b32d2d 0) bottom left;
+    background-size: 51% 50%;
+    background-repeat: no-repeat;
+}
 

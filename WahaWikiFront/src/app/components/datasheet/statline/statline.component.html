@@ -12,17 +12,17 @@
         <td class="statCell">Ld</td>
         <td class="statCell">Sv</td>
     </tr>
-    <tr>
-        <td class="statCell">{{statLines.Number}}</td>
-        <td class="statCellName">{{statLines.ModelName}}</td>
-        <td class="statCell">{{statLines.Move}}</td>
-        <td class="statCell">{{statLines.WS}}</td>
-        <td class="statCell">{{statLines.BS}}</td>
-        <td class="statCell">{{statLines.Strength}}</td>
-        <td class="statCell">{{statLines.Toughness}}</td>
-        <td class="statCell">{{statLines.Wounds}}</td>
-        <td class="statCell">{{statLines.Attacks}}</td>
-        <td class="statCell">{{statLines.Leadership}}</td>
-        <td class="statCell">{{statLines.SavingThrows}}</td>
+    <tr *ngFor="let statLine of statLineList">
+        <td class="statCell">{{statLine.minNumber | numOfModelsPipe : statLine.maxNumber }}</td>
+        <td class="statCellName"><span>{{statLine.modelName}} <div class="priceTag">{{statLine.pointPrice}}</div></span></td>
+        <td class="statCell">{{statLine.move| statPlusPipe:'"'}}</td>
+        <td class="statCell">{{statLine.ws | statPlusPipe:"+"}}</td>
+        <td class="statCell">{{statLine.bs| statPlusPipe:"+"}}</td>
+        <td class="statCell">{{statLine.strength}}</td>
+        <td class="statCell">{{statLine.toughness}}</td>
+        <td class="statCell">{{statLine.wounds}}</td>
+        <td class="statCell">{{statLine.attacks}}</td>
+        <td class="statCell">{{statLine.leadership}}</td>
+        <td class="statCell">{{statLine.savingThrows| statPlusPipe:"+"}}</td>
     </tr>
 </table>

@@ -1,6 +1,10 @@
 <div class="datasheet">
-    <div><h3 class="dsTitle">ADRAX AGATONE</h3></div>
-    <app-statline></app-statline>
-    <app-weapon-list></app-weapon-list>
-    <app-abilities></app-abilities>
+    <div>
+        <img src="/assets/img/Role_HQ.png" style="float: left;margin-top: -4px;">
+        <div class="powerLvl">{{unit?.power}}</div>
+        <h3 class="dsTitle">{{unitName | uppercase}}</h3>
+    </div>
+    <app-statline *ngIf="unitStatList!.length > 0" [statLine]="unitStatList"></app-statline>
+    <app-weapon-list *ngIf="unitWeaponList!.length > 0" [weaponList]="unitWeaponList"></app-weapon-list>
+    <app-abilities *ngIf="unitAbilityList!.length > 0" [AbilityList]="unitAbilityList"></app-abilities>
 </div>

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { IStatLine } from 'src/app/entities/entities';
+import { Component, Input, OnInit } from '@angular/core';
+import { UnitStat } from '../../enteties/UnitEntety';
 
 @Component({
   selector: 'app-statline',
@@ -8,20 +8,9 @@ import { IStatLine } from 'src/app/entities/entities';
 })
 export class StatlineComponent implements OnInit {
 
-  statLines:IStatLine={
-    ModelName:"Test",
-    Number: 0,
-    Move: 6,
-    WS: 3,
-    BS: 4,
-    Strength: 5,
-    Toughness: 4,
-    Wounds: 3,
-    Attacks: 2,
-    Leadership: 9,
-    SavingThrows: 2
-  };
-  
+  @Input('statLine') 
+  statLineList?:UnitStat[];
+
   constructor() { }
 
   ngOnInit(): void {

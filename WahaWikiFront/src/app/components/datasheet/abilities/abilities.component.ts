@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,Input, OnInit } from '@angular/core';
+import { Ability } from '../../enteties/UnitEntety';
 
 @Component({
   selector: 'app-abilities',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./abilities.component.css']
 })
 export class AbilitiesComponent implements OnInit {
+
+  @Input('AbilityList')
+  abilityList?:Ability[] = [];
 
   constructor() { }
 

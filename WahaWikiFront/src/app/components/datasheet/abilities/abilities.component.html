@@ -5,8 +5,10 @@
         </td>
         <td class="abData">
             <div class="abCol2">
-                <div class="BreakInsideAvoid">
-                    ANGELS OF DEATH: This unit has the following abilities, which are described below: And They Shall Know No Fear; Bolter Discipline; Shock Assault; Combat Doctrines.
+
+                <div *ngFor="let ability of abilityList" class="BreakInsideAvoid">
+                    {{ability.description}}
+                    <!-- ANGELS OF DEATH: This unit has the following abilities, which are described below: And They Shall Know No Fear; Bolter Discipline; Shock Assault; Combat Doctrines. -->
                 </div>
             </div>
         </td>
