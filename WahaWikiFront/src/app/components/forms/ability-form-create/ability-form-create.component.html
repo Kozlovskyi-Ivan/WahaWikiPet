@@ -1,0 +1,24 @@
+<div class="form-container">
+    <div style="min-width: 50%; position: relative;">
+        <p class="form-title">Add Ability</p>
+        <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+            <div class="form-control">
+                <label for="" class="fm-label">Name</label>
+                <input formControlName="name" type="text" placeholder="Add name" class="fm-input" />
+            </div>
+            <div class="form-control">
+                <label for="" class="fm-label">Short name</label>
+                <input formControlName="shortName" type="text" placeholder="Add Short Name" class="fm-input" />
+            </div>
+            <div class="form-control">
+                <label for="" class="fm-label">Description</label>
+                <textarea formControlName="description" placeholder="Add Description" rows="6" cols="50"
+                    class="fm-input"></textarea>
+            </div>
+            <div class="btn-container">
+                <input type="submit" value="Submit" class="btn btn-block" 
+                [disabled]="isFormValid()">
+            </div>
+        </form>
+    </div>
+</div>

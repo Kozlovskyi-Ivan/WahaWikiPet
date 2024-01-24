@@ -1,0 +1,23 @@
+<div>
+    <div>
+        <button class="button" (click)="setVisibleCreateForm(true)">Create Weapon Ability</button>
+    </div>
+    <div *ngFor="let item of weaponAbilityList">
+        <app-post-item [id]="item.id" [title]="item.name" [description]="item.description" [ability]="item"
+            [deleteOnClick]="deleteWeaponAbility" [editOnClick]="editAbility">
+        </app-post-item>
+    </div>
+    <app-my-modal [visible]="isVisibleEditForm" [setVisible]="setVisibleEditForm">
+        <app-weapon-ability-form-edit 
+            [OnFillFormEntety]="ability" 
+            [OnSubmitListRefresh]="refreshList"
+            [OnSublitHideModal]="setVisibleEditForm">
+        </app-weapon-ability-form-edit>
+    </app-my-modal>
+    <app-my-modal [visible]="isVisibleCreateForm" [setVisible]="setVisibleCreateForm">
+        <app-weapon-ability-form-create 
+            [OnSubmitListRefresh]="refreshList"
+            [OnSublitHideModal]="setVisibleCreateForm">
+        </app-weapon-ability-form-create>
+    </app-my-modal>
+</div>

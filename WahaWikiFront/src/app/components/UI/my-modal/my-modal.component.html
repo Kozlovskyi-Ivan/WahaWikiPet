@@ -1,0 +1,5 @@
+<div class="myModal" [ngClass]="{'active':visible}" (click)="setVisible(false)">
+    <div class="myModalContent" (click)="onEvent($event)">
+        <ng-content></ng-content>
+    </div>
+</div>

@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WahaWikiAPI.Database;
 using WahaWikiAPI.Entities;
+using WahaWikiAPI.Models;
+using WahaWikiAPI.Services;
 
 namespace WahaWikiAPI.Controllers
 {
@@ -15,24 +17,26 @@ namespace WahaWikiAPI.Controllers
     public class WeaponAbilitiesController : ControllerBase
     {
         private readonly WahaDbContext _context;
+        private readonly IWeaponAbilityService _weaponAbilityService;
 
-        public WeaponAbilitiesController(WahaDbContext context)
+        public WeaponAbilitiesController(WahaDbContext context, IWeaponAbilityService weaponAbilityService)
         {
             _context = context;
+            _weaponAbilityService = weaponAbilityService;
         }
 
         // GET: api/WeaponAbilities
         [HttpGet]
         public async Task<ActionResult<IEnumerable<WeaponAbilities>>> GetWeaponAbilities()
         {
-            return await _context.WeaponAbilities.ToListAsync();
+            return await _weaponAbilityService.GetWeaponAbilities();
         }
 
         // GET: api/WeaponAbilities/5
         [HttpGet("{id}")]
         public async Task<ActionResult<WeaponAbilities>> GetWeaponAbilities(int id)
         {
-            var weaponAbilities = await _context.WeaponAbilities.FindAsync(id);
+            var weaponAbilities = await _weaponAbilityService.GetWeaponAbilityById(id);
 
             if (weaponAbilities == null)
             {
@@ -45,22 +49,21 @@ namespace WahaWikiAPI.Controllers
         // PUT: api/WeaponAbilities/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutWeaponAbilities(int id, WeaponAbilities weaponAbilities)
+        public async Task<IActionResult> PutWeaponAbilities(int id, CreateWeaponAbility weaponAbilities)
         {
-            if (id != weaponAbilities.WeaponAbilitiesId)
-            {
-                return BadRequest();
-            }
 
-            _context.Entry(weaponAbilities).State = EntityState.Modified;
+            if (await WeaponAbilitiesExists(id))
+            {
+                return NotFound();
+            }
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _weaponAbilityService.UpdateWeaponAbility(id, weaponAbilities);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!WeaponAbilitiesExists(id))
+                if (!(await WeaponAbilitiesExists(id)))
                 {
                     return NotFound();
                 }
@@ -76,33 +79,33 @@ namespace WahaWikiAPI.Controllers
         // POST: api/WeaponAbilities
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<WeaponAbilities>> PostWeaponAbilities(WeaponAbilities weaponAbilities)
+        public async Task<ActionResult<WeaponAbilities>> PostWeaponAbilities(CreateWeaponAbility weaponAbilities)
         {
-            _context.WeaponAbilities.Add(weaponAbilities);
-            await _context.SaveChangesAsync();
+            var weaponAbility = await _weaponAbilityService.CreateWeaponAbility(weaponAbilities);
 
-            return CreatedAtAction("GetWeaponAbilities", new { id = weaponAbilities.WeaponAbilitiesId }, weaponAbilities);
+            return CreatedAtAction("GetWeaponAbilities", new { id = weaponAbility.Id }, weaponAbility);
         }
 
         // DELETE: api/WeaponAbilities/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteWeaponAbilities(int id)
         {
-            var weaponAbilities = await _context.WeaponAbilities.FindAsync(id);
+            var weaponAbilities = await _weaponAbilityService.GetWeaponAbilityById(id);
             if (weaponAbilities == null)
             {
                 return NotFound();
             }
 
-            _context.WeaponAbilities.Remove(weaponAbilities);
-            await _context.SaveChangesAsync();
+            await _weaponAbilityService.DeleteWeaponAbility(id);
 
             return NoContent();
         }
 
-        private bool WeaponAbilitiesExists(int id)
+        private async Task<bool> WeaponAbilitiesExists(int id)
         {
-            return _context.WeaponAbilities.Any(e => e.WeaponAbilitiesId == id);
+            var weaponAbility = await _weaponAbilityService.GetWeaponAbilityById(id);
+
+            return weaponAbility == null;
         }
     }
 }

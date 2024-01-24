@@ -22,6 +22,7 @@ builder.Services.AddDbContext<WahaDbContext>(
 builder.Services.AddTransient<IWeaponService, WeaponService>();
 builder.Services.AddTransient<IUnitService, UnitService>();
 builder.Services.AddTransient<IAbilityService, AbilityService>();
+builder.Services.AddTransient<IWeaponAbilityService, WeaponAbilityService>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: myAllowSpecificOrigins, builder =>

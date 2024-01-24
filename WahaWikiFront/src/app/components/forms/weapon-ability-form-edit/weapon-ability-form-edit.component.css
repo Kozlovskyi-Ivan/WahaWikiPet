@@ -1,0 +1,136 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form-title {
+    margin: 20px 0px;
+    font-size: 35px;
+  }
+  
+  .form-control {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .btn {
+    cursor: pointer;
+    outline: 0;
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    font-size: 16px;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  }
+  
+  .btn:hover {
+    color: #fff;
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+  }
+  
+  .btn:active {
+    transform: scale(0.98);
+  }
+  .btn-block {
+    display: block;
+    width: 100%;
+  }
+  .btn:disabled,
+  .btn.btn-delete:disabled{
+    border: 1px solid #999999;
+    background-color: #cccccc !important;
+    color: #666666;
+  }
+  .btn.btn-delete{
+    width: 100%;
+    background-color: red;
+    margin-left: 16px;
+  }
+  .btn-container{
+    display: flex;
+  }
+  .fm-input {
+    padding: 6px 12px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    appearance: none;
+    border-radius: 4px;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  }
+  
+  .fm-input:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+  }
+  .fm-input.err:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #fe8686;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(253, 13, 13, 0.25);
+  }
+  
+  .fm-label {
+    padding: 6px 8px;
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 1.5;
+  }
+  .fm-label:after {
+    color: #d00;
+    content: "*";
+    margin-left: 5px;
+    top:7px;
+  }
+  .val-err{
+    padding: 5px 5px 0px 5px;
+  }
+  
+  .msg-box{
+    /* visibility: hidden; */
+    position: absolute;
+    width: 55%;
+    left: 100%;
+    opacity: 0;
+    transition: visibility 0s linear 300ms, opacity 300ms;
+    color: #fff;
+    background-color: green;
+    border-color: green;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    margin: 20px 0px;
+    padding: 0px;
+    font-size: 16px;
+    border-radius: 0.25rem;
+  }
+  .msg-box > p{
+    padding: 10px 6px;
+  }
+  
+  .msg-box.error{
+    background-color: rgb(255, 80, 0);
+  }
+  .msg-box.showmsg{
+    /* visibility: visible; */
+    opacity: 1;
+    transition: visibility 0s linear 0s, opacity 300ms;
+  }
+  

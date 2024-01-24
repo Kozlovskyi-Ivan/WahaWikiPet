@@ -7,12 +7,13 @@
         <p class="form-title">{{isEdit ? "Edit "+ability.name : "Create ability"}}</p>
         <div class="form-control" *ngIf="isEdit">
             <label for="AbilityList" class="fm-label">Select Ability</label>
-            <select name="AbilityList" id="selAbility" class="select-style" #selAbility (change)="onSelect(selAbility.value)">
+            <select name="AbilityList" id="selAbility" class="select-style" (change)="onSelect(selAbility.value)" [(ngModel)]="abilityList" 
+            requiered #selAbility="ngModel">
                 <option *ngFor="let abylity of abilityList" [value]="abylity.id">{{abylity.name}}</option>
             </select>
             <!-- <button id="btnDelete" class="btn btn-delete" (click)="onDelete()">Delete {{ability.name}}</button> -->
         </div>
-        <form (ngSubmit)="onSubmit()">
+        <form (ngSubmit)="onSubmit()" [formGroup]="form">
             <div class="form-control">
                 <label for="name" class="fm-label">Name</label>
                 <input 
@@ -20,39 +21,67 @@
                  id="name" 
                  name="name" 
                  class="fm-input" 
-                 [(ngModel)]="ability.name" 
-                 placeholder="Add name" 
+                 placeholder="Add name"
+                 formControlName="name"
                 />
+                <!-- required 
+                #name="ngModel"
+                [ngClass]="{'err' : name.errors?.['required']}"
+                [(ngModel)]="ability.name"  -->
+                <!-- <div *ngIf="name.errors?.['required']" class="val-err">
+                    Name is required.
+                </div> -->
             </div>
             <div class="form-control">
                 <label for="" class="fm-label">Short name</label>
                 <input 
                  type="text" 
-                 id="text" 
+                 id="shortName" 
                  name="shortName" 
                  class="fm-input" 
-                 [(ngModel)]="ability.shortName"
                  placeholder="Add Short Name" 
+                 formControlName="shortName"
                 />
+                <!-- <div *ngIf="shortName.errors?.['required']" class="val-err">
+                    Short name is required.
+                </div> -->
             </div>
             <div class="form-control">
                 <label for="Description" class="fm-label">Description</label>
                 <textarea 
-                 id="text" 
+                 id="textarea" 
                  name="description" 
                  rows="6" 
                  cols="50" 
                  class="fm-input" 
-                 [(ngModel)]="ability.description" 
-                 placeholder="Add Description" 
-                 style="resize: none"
-                >
-                </textarea>
+                 placeholder="Add Description"
+                 formControlName="description"
+                ></textarea>
+                <!-- <div *ngIf="description.errors?.['required']" class="val-err">
+                    Description is required.
+                </div> -->
             </div >
             <div class="btn-container">
-                <input type="submit" value="Submit" class="btn btn-block">
-                <button *ngIf="isEdit" id="btnDelete" class="btn btn-delete" (click)="onDelete()">Delete {{ability.name}}</button>
+                <input 
+                type="submit"
+                value="Submit"
+                class="btn btn-block">
+                <button 
+                *ngIf="isEdit" 
+                id="btnDelete" 
+                class="btn btn-delete" 
+                (click)="onDelete()">
+                Delete {{ability.name}}
+            </button>
+            <!-- [disabled]="(description.errors?.['required']) ? true : false" -->
+
             </div>
+            {{form.valid}}
+            {{form.status }}
+            {{form.get('name')?.value}}
+            {{form.get('shortName')?.value }}
+            {{form.get('description')?.value }}
+            {{form.get('description2')?.value}}
             <!-- <input type="submit" value="Submit" class="btn btn-block">
             <button id="btnDelete" class="btn btn-delete" (click)="onDelete()">Delete {{ability.name}}</button> -->
         </form>

@@ -20,7 +20,7 @@ namespace WahaWikiAPI.Services
             {
                 foreach (var AbilityId in (weaponModel.Abilities))
                 {
-                    var exectingAbility = await _context.WeaponAbilities.FirstOrDefaultAsync(e => e.WeaponAbilitiesId == AbilityId);
+                    var exectingAbility = await _context.WeaponAbilities.FirstOrDefaultAsync(e => e.Id == AbilityId);
                     if (exectingAbility != null)
                     {
                         abilities.Add(exectingAbility);
@@ -71,7 +71,7 @@ namespace WahaWikiAPI.Services
                 foreach (var AbilityId in (weaponModel.Abilities))
                 {
                     var exectingAbility = await _context.WeaponAbilities
-                        .FirstOrDefaultAsync(e => e.WeaponAbilitiesId == AbilityId);
+                        .FirstOrDefaultAsync(e => e.Id == AbilityId);
 
                     if (exectingAbility != null)
                     {

@@ -1,6 +1,13 @@
  export interface AbilityEntety{
-    id: number;
+    id?: number;
     name: string;
     shortName: string;
     description: string;
 }
+export interface WeaponAbilityEntety{
+    id?: number;
+    name: string;
+    shortName: string;
+    description: string;
+}
+

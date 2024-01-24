@@ -45,7 +45,7 @@ export interface WeaponType {
     typeRuleText: string;
 }
 export interface WeaponAbility {
-    id: number;
+    id?: number;
     name: string;
     shortName: string;
     description: string;

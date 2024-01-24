@@ -1,0 +1,12 @@
+<div class="post">
+    <div>
+        <strong>{{id}} {{title}}</strong>
+        <div>
+            {{description}}
+        </div>
+    </div>
+    <div style="display: flex;">
+        <div><button class="btn" (click)="editOnClick(ability!)">Edit</button></div>
+        <div><button class="btn btn-delete" (click)="deleteOnClick(id!)">Delete</button></div>
+    </div>
+</div>
